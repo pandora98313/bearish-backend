@@ -4,11 +4,15 @@ const config = require('./config');
 const logger = require('./utils/logger');
 
 let latestPrice = null;
-
-async function fetchBitcoinPrice() {
+let periodStartTime = Date.now();
+let cycleStartPrice = 0;
+const periodDuration = 30000; // 30 seconds
+let remainingTime = periodDuration / 1000;
+async function fetchBitcoinPrices() {
   try {
     const response = await axios.get(config.binanceApiUrl);
-    return parseFloat(response.data.price);
+    const prices = response.data.map(price => parseFloat(price[4]));
+    return prices;
   } catch (error) {
     logger.error('Error fetching Bitcoin price:', error);
     return null;
@@ -16,14 +20,9 @@ async function fetchBitcoinPrice() {
 }
 
 function setupWebSocket(io) {
-  io.on('connection', (socket) => {
+  io.on('connection', async (socket) => {
     logger.info('Client connected');
-
-    // Send current price on connection
-    if (latestPrice) {
-      socket.emit('price', latestPrice);
-    }
-
+    
     // Handle betting
     socket.on('bet', async (data) => {
       try {
@@ -36,20 +35,44 @@ function setupWebSocket(io) {
       }
     });
 
+    socket.on('startNewPeriod', (currentPrice) => {
+      cycleStartPrice = currentPrice;
+      periodStartTime = Date.now();
+      socket.emit('periodStarted', { remainingTime: periodDuration / 1000, result: null }); // Send initial remaining time and result
+    });
+
     socket.on('disconnect', () => {
       logger.info('Client disconnected');
     });
   });
-
-  // Start price updates
   setInterval(async () => {
-    const newPrice = await fetchBitcoinPrice();
-    if (newPrice && newPrice !== latestPrice) {
-      latestPrice = newPrice;
-      
-      io.emit('price', latestPrice);
+    const prices = await fetchBitcoinPrices();
+    io.emit('prices', prices);
+    latestPrice = prices[prices?.length - 1];
+    if(remainingTime > 0){
+      io.emit('updateRemainingTime', { remainingTime: Math.floor(remainingTime) }); // Send as an integer
     }
-  }, config.updateInterval);
+  }, 100);
+  // Start price updates
+  setInterval(() => {
+  
+      const timeElapsed = Date.now() - periodStartTime;
+      remainingTime = Math.max((periodDuration - timeElapsed) / 1000, 0);
+
+      // Emit remaining time every second
+      // if (remainingTime > 0) {
+      //   io.emit('updateRemainingTime', { remainingTime: Math.floor(remainingTime) }); // Send as an integer
+      // }
+
+      if (remainingTime <= 0) {
+        const result = latestPrice >= cycleStartPrice ? 'up' : 'down';
+        io.emit('periodEnded', { remainingTime: 0, result });
+        // Reset for the next period
+        cycleStartPrice = latestPrice;
+        periodStartTime = Date.now();
+      }
+  }, 1000); // Set interval to 1000 milliseconds (1 second)
+  
 }
 
 module.exports = { setupWebSocket };
