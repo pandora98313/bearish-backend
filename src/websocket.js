@@ -63,7 +63,9 @@ function setupWebSocket(io) {
       // if (remainingTime > 0) {
       //   io.emit('updateRemainingTime', { remainingTime: Math.floor(remainingTime) }); // Send as an integer
       // }
-
+      if (remainingTime == 29) {
+  
+      }
       if (remainingTime <= 0) {
         const result = latestPrice >= cycleStartPrice ? 'up' : 'down';
         io.emit('periodEnded', { remainingTime: 0, result });
