@@ -1,0 +1,1565 @@
+{
+  "address": "FVkDSzbkhPjoB6Jxe5aFx6ExAZq8RzBRVVSebmqRg9Py",
+  "metadata": {
+    "name": "bearish_dot_fun",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "claim_affiliate_winnings",
+      "discriminator": [173, 85, 113, 27, 172, 92, 30, 21],
+      "accounts": [
+        {
+          "name": "user"
+        },
+        {
+          "name": "affiliate",
+          "signer": true
+        },
+        {
+          "name": "platform_config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112, 108, 97, 116, 102, 111, 114, 109, 95, 99, 111, 110, 102,
+                  105, 103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "platform_vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112, 108, 97, 116, 102, 111, 114, 109, 95, 118, 97, 117, 108,
+                  116
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "stablecoin"
+        },
+        {
+          "name": "round"
+        },
+        {
+          "name": "user_bet",
+          "writable": true
+        },
+        {
+          "name": "affiliate_token_account",
+          "writable": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "token_program"
+        }
+      ],
+      "args": [
+        {
+          "name": "round_index",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "claim_user_winnings",
+      "discriminator": [158, 208, 185, 185, 180, 124, 160, 16],
+      "accounts": [
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "platform_config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112, 108, 97, 116, 102, 111, 114, 109, 95, 99, 111, 110, 102,
+                  105, 103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "user_info",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [117, 115, 101, 114]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              }
+            ]
+          }
+        },
+        {
+          "name": "round"
+        },
+        {
+          "name": "user_bet",
+          "writable": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "round_index",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "deposit",
+      "discriminator": [242, 35, 198, 137, 82, 225, 242, 182],
+      "accounts": [
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "platform_config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112, 108, 97, 116, 102, 111, 114, 109, 95, 99, 111, 110, 102,
+                  105, 103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "stablecoin"
+        },
+        {
+          "name": "platform_vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112, 108, 97, 116, 102, 111, 114, 109, 95, 118, 97, 117, 108,
+                  116
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "user_token_account",
+          "writable": true
+        },
+        {
+          "name": "user_info",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [117, 115, 101, 114]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "token_program"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "end_round",
+      "discriminator": [54, 47, 1, 200, 250, 6, 144, 63],
+      "accounts": [
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "platform_config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112, 108, 97, 116, 102, 111, 114, 109, 95, 99, 111, 110, 102,
+                  105, 103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "round",
+          "writable": true
+        },
+        {
+          "name": "price_account"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "initialize",
+      "discriminator": [175, 175, 109, 31, 13, 152, 155, 237],
+      "accounts": [
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "stablecoin"
+        },
+        {
+          "name": "platform_vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112, 108, 97, 116, 102, 111, 114, 109, 95, 118, 97, 117, 108,
+                  116
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "platform_config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112, 108, 97, 116, 102, 111, 114, 109, 95, 99, 111, 110, 102,
+                  105, 103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "token_program"
+        }
+      ],
+      "args": [
+        {
+          "name": "global_round_info",
+          "type": {
+            "defined": {
+              "name": "GlobalRoundInfo"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "place_bet",
+      "discriminator": [222, 62, 67, 220, 63, 166, 126, 33],
+      "accounts": [
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "platform_config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112, 108, 97, 116, 102, 111, 114, 109, 95, 99, 111, 110, 102,
+                  105, 103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "user_info",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [117, 115, 101, 114]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              }
+            ]
+          }
+        },
+        {
+          "name": "round",
+          "writable": true
+        },
+        {
+          "name": "user_bet",
+          "writable": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        },
+        {
+          "name": "is_long",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "set_affiliate",
+      "discriminator": [239, 206, 13, 0, 98, 227, 86, 233],
+      "accounts": [
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "user_info",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [117, 115, 101, 114]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "affiliate",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "set_allocation",
+      "discriminator": [119, 81, 22, 4, 114, 187, 23, 145],
+      "accounts": [
+        {
+          "name": "owner",
+          "signer": true
+        },
+        {
+          "name": "platform_config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112, 108, 97, 116, 102, 111, 114, 109, 95, 99, 111, 110, 102,
+                  105, 103
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "allocation",
+          "type": {
+            "defined": {
+              "name": "Allocation"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "set_duration",
+      "discriminator": [28, 157, 247, 166, 68, 185, 230, 238],
+      "accounts": [
+        {
+          "name": "owner",
+          "signer": true
+        },
+        {
+          "name": "platform_config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112, 108, 97, 116, 102, 111, 114, 109, 95, 99, 111, 110, 102,
+                  105, 103
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "duration",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "set_jackpot_allocation",
+      "discriminator": [238, 183, 103, 170, 90, 144, 2, 13],
+      "accounts": [
+        {
+          "name": "owner",
+          "signer": true
+        },
+        {
+          "name": "platform_config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112, 108, 97, 116, 102, 111, 114, 109, 95, 99, 111, 110, 102,
+                  105, 103
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "jackpot_allocation",
+          "type": {
+            "defined": {
+              "name": "JackPotAllocation"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "set_min_bet_amount",
+      "discriminator": [210, 47, 134, 160, 149, 208, 190, 239],
+      "accounts": [
+        {
+          "name": "owner",
+          "signer": true
+        },
+        {
+          "name": "platform_config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112, 108, 97, 116, 102, 111, 114, 109, 95, 99, 111, 110, 102,
+                  105, 103
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "min_bet_amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "set_price_account",
+      "discriminator": [6, 127, 170, 42, 66, 99, 161, 151],
+      "accounts": [
+        {
+          "name": "owner",
+          "signer": true
+        },
+        {
+          "name": "platform_config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112, 108, 97, 116, 102, 111, 114, 109, 95, 99, 111, 110, 102,
+                  105, 103
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "price_account",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "set_staleness_threshold",
+      "discriminator": [200, 61, 16, 5, 100, 125, 172, 210],
+      "accounts": [
+        {
+          "name": "owner",
+          "signer": true
+        },
+        {
+          "name": "platform_config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112, 108, 97, 116, 102, 111, 114, 109, 95, 99, 111, 110, 102,
+                  105, 103
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "staleness_threshold",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "start_round",
+      "discriminator": [144, 144, 43, 7, 193, 42, 217, 215],
+      "accounts": [
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "platform_config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112, 108, 97, 116, 102, 111, 114, 109, 95, 99, 111, 110, 102,
+                  105, 103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "round",
+          "writable": true
+        },
+        {
+          "name": "price_account"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "transfer_ownership",
+      "discriminator": [65, 177, 215, 73, 53, 45, 99, 47],
+      "accounts": [
+        {
+          "name": "owner",
+          "signer": true
+        },
+        {
+          "name": "new_owner",
+          "signer": true
+        },
+        {
+          "name": "platform_config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112, 108, 97, 116, 102, 111, 114, 109, 95, 99, 111, 110, 102,
+                  105, 103
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "withdraw",
+      "discriminator": [183, 18, 70, 156, 148, 109, 161, 34],
+      "accounts": [
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "platform_config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112, 108, 97, 116, 102, 111, 114, 109, 95, 99, 111, 110, 102,
+                  105, 103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "stablecoin"
+        },
+        {
+          "name": "platform_vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112, 108, 97, 116, 102, 111, 114, 109, 95, 118, 97, 117, 108,
+                  116
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "user_token_account",
+          "writable": true
+        },
+        {
+          "name": "user_info",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [117, 115, 101, 114]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "token_program"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "withdraw_platform_fees",
+      "discriminator": [87, 24, 138, 122, 62, 146, 186, 199],
+      "accounts": [
+        {
+          "name": "owner",
+          "signer": true
+        },
+        {
+          "name": "platform_config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112, 108, 97, 116, 102, 111, 114, 109, 95, 99, 111, 110, 102,
+                  105, 103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "stablecoin"
+        },
+        {
+          "name": "platform_vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112, 108, 97, 116, 102, 111, 114, 109, 95, 118, 97, 117, 108,
+                  116
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "owner_token_account",
+          "writable": true
+        },
+        {
+          "name": "token_program"
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Bet",
+      "discriminator": [147, 23, 35, 59, 15, 75, 155, 32]
+    },
+    {
+      "name": "PlatformConfig",
+      "discriminator": [160, 78, 128, 0, 248, 83, 230, 160]
+    },
+    {
+      "name": "Round",
+      "discriminator": [87, 127, 165, 51, 73, 78, 116, 174]
+    },
+    {
+      "name": "UserInfo",
+      "discriminator": [83, 134, 200, 56, 144, 56, 10, 62]
+    }
+  ],
+  "events": [
+    {
+      "name": "AffiliateSet",
+      "discriminator": [242, 39, 33, 12, 23, 49, 183, 155]
+    },
+    {
+      "name": "AffiliateWinningsClaimed",
+      "discriminator": [184, 37, 205, 37, 124, 199, 126, 83]
+    },
+    {
+      "name": "AllocationSet",
+      "discriminator": [32, 45, 253, 55, 65, 85, 102, 218]
+    },
+    {
+      "name": "BetPlaced",
+      "discriminator": [88, 88, 145, 226, 126, 206, 32, 0]
+    },
+    {
+      "name": "CollectedPlatformFees",
+      "discriminator": [150, 242, 234, 9, 201, 66, 235, 198]
+    },
+    {
+      "name": "Deposited",
+      "discriminator": [111, 141, 26, 45, 161, 35, 100, 57]
+    },
+    {
+      "name": "DurationSet",
+      "discriminator": [71, 11, 7, 226, 11, 70, 113, 89]
+    },
+    {
+      "name": "Initialized",
+      "discriminator": [208, 213, 115, 98, 115, 82, 201, 209]
+    },
+    {
+      "name": "JackPotAllocationSet",
+      "discriminator": [224, 221, 118, 233, 113, 150, 29, 4]
+    },
+    {
+      "name": "MinBetAmountSet",
+      "discriminator": [162, 199, 146, 106, 239, 196, 170, 95]
+    },
+    {
+      "name": "OwnershipTransferred",
+      "discriminator": [172, 61, 205, 183, 250, 50, 38, 98]
+    },
+    {
+      "name": "PriceAccountSet",
+      "discriminator": [184, 147, 189, 171, 55, 139, 251, 117]
+    },
+    {
+      "name": "RoundEnded",
+      "discriminator": [70, 113, 6, 162, 176, 78, 201, 19]
+    },
+    {
+      "name": "RoundStarted",
+      "discriminator": [180, 209, 2, 244, 238, 48, 170, 120]
+    },
+    {
+      "name": "StalenessThresholdSet",
+      "discriminator": [75, 100, 196, 207, 227, 252, 58, 210]
+    },
+    {
+      "name": "WinningsClaimed",
+      "discriminator": [187, 184, 29, 196, 54, 117, 70, 150]
+    },
+    {
+      "name": "Withdrawn",
+      "discriminator": [20, 89, 223, 198, 194, 124, 219, 13]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "DurationZero",
+      "msg": "Round duration cannot be 0."
+    },
+    {
+      "code": 6001,
+      "name": "InvalidAllocation",
+      "msg": "Invalid allocation. Does not add up to 100%."
+    },
+    {
+      "code": 6002,
+      "name": "ExceedsMaxFee",
+      "msg": "Exceeds max fee in bips."
+    },
+    {
+      "code": 6003,
+      "name": "InvalidJackPotAllocation",
+      "msg": "Invalid jackpot allocation."
+    },
+    {
+      "code": 6004,
+      "name": "PriceAccountDefaultPubkey",
+      "msg": "Price account cannot be default pubkey."
+    },
+    {
+      "code": 6005,
+      "name": "DepositAmountZero",
+      "msg": "Deposit amount cannot be 0."
+    },
+    {
+      "code": 6006,
+      "name": "WithdrawAmountZero",
+      "msg": "Withdraw amount cannot be 0."
+    },
+    {
+      "code": 6007,
+      "name": "InvalidAffiliate",
+      "msg": "Invalid affiliate address."
+    },
+    {
+      "code": 6008,
+      "name": "PriceCannotBeZero",
+      "msg": "Price cannot be 0."
+    },
+    {
+      "code": 6009,
+      "name": "RoundHasNotEndedYet",
+      "msg": "Round has not ended yet."
+    },
+    {
+      "code": 6010,
+      "name": "RoundAlreadyStarted",
+      "msg": "Round already started."
+    },
+    {
+      "code": 6011,
+      "name": "RoundAlreadyEnded",
+      "msg": "Round already ended."
+    },
+    {
+      "code": 6012,
+      "name": "BetAmountBelowMinBetAmount",
+      "msg": "Bet amount cannot be less than the minimum bet amount."
+    },
+    {
+      "code": 6013,
+      "name": "AlreadyClaimedWinnings",
+      "msg": "Already claimed winnings."
+    },
+    {
+      "code": 6014,
+      "name": "IneligibleForClaim",
+      "msg": "Ineligible for claim."
+    },
+    {
+      "code": 6015,
+      "name": "AlreadyCollectedPlatformFees",
+      "msg": "Already collected platform fees."
+    },
+    {
+      "code": 6016,
+      "name": "ClaimAmountZero",
+      "msg": "Claim amount cannot be 0."
+    },
+    {
+      "code": 6017,
+      "name": "PlatformFeeAmountZero",
+      "msg": "Platform fee amount to collect is 0."
+    }
+  ],
+  "types": [
+    {
+      "name": "AffiliateSet",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "type": "pubkey"
+          },
+          {
+            "name": "affiliate",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AffiliateWinningsClaimed",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "affiliate",
+            "type": "pubkey"
+          },
+          {
+            "name": "round_index",
+            "type": "u64"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Allocation",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "winners_share",
+            "type": "u16"
+          },
+          {
+            "name": "affiliate_share",
+            "type": "u16"
+          },
+          {
+            "name": "jackpot_share",
+            "type": "u16"
+          },
+          {
+            "name": "platform_share",
+            "type": "u16"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AllocationSet",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "allocation",
+            "type": {
+              "defined": {
+                "name": "Allocation"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Bet",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "is_long",
+            "type": "bool"
+          },
+          {
+            "name": "affiliate",
+            "type": "pubkey"
+          },
+          {
+            "name": "has_claimed_winnings",
+            "type": "bool"
+          },
+          {
+            "name": "has_affiliate_claimed_winnings",
+            "type": "bool"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "BetPlaced",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "type": "pubkey"
+          },
+          {
+            "name": "round",
+            "type": "u64"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "is_long",
+            "type": "bool"
+          },
+          {
+            "name": "affiliate",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CollectedPlatformFees",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Deposited",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "type": "pubkey"
+          },
+          {
+            "name": "stablecoin",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DurationSet",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "duration",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "GlobalRoundInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "round",
+            "type": "u64"
+          },
+          {
+            "name": "duration",
+            "type": "u64"
+          },
+          {
+            "name": "allocation",
+            "type": {
+              "defined": {
+                "name": "Allocation"
+              }
+            }
+          },
+          {
+            "name": "jackpot_allocation",
+            "type": {
+              "defined": {
+                "name": "JackPotAllocation"
+              }
+            }
+          },
+          {
+            "name": "min_bet_amount",
+            "type": "u64"
+          },
+          {
+            "name": "price_account",
+            "type": "pubkey"
+          },
+          {
+            "name": "staleness_threshold",
+            "type": "u64"
+          },
+          {
+            "name": "jackpot_pool_amount",
+            "type": "u64"
+          },
+          {
+            "name": "accumulated_platform_fees",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Initialized",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "stablecoin",
+            "type": "pubkey"
+          },
+          {
+            "name": "platform_vault",
+            "type": "pubkey"
+          },
+          {
+            "name": "global_round_info",
+            "type": {
+              "defined": {
+                "name": "GlobalRoundInfo"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "JackPotAllocation",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "streak_5",
+            "type": "u16"
+          },
+          {
+            "name": "streak_6",
+            "type": "u16"
+          },
+          {
+            "name": "streak_7",
+            "type": "u16"
+          },
+          {
+            "name": "streak_8",
+            "type": "u16"
+          },
+          {
+            "name": "streak_9",
+            "type": "u16"
+          },
+          {
+            "name": "streak_10",
+            "type": "u16"
+          }
+        ]
+      }
+    },
+    {
+      "name": "JackPotAllocationSet",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "jackpot_allocation",
+            "type": {
+              "defined": {
+                "name": "JackPotAllocation"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "MinBetAmountSet",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "min_bet_amount",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "OwnershipTransferred",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "new_owner",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PlatformConfig",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "stablecoin",
+            "type": "pubkey"
+          },
+          {
+            "name": "global_round_info",
+            "type": {
+              "defined": {
+                "name": "GlobalRoundInfo"
+              }
+            }
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "platform_vault_bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PriceAccountSet",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "price_account",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Round",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "start_time",
+            "type": "u64"
+          },
+          {
+            "name": "starting_price",
+            "type": "u64"
+          },
+          {
+            "name": "ending_price",
+            "type": "u64"
+          },
+          {
+            "name": "long_positions",
+            "type": "u64"
+          },
+          {
+            "name": "short_positions",
+            "type": "u64"
+          },
+          {
+            "name": "affiliates_for_long_positions",
+            "type": "u64"
+          },
+          {
+            "name": "affiliates_for_short_positions",
+            "type": "u64"
+          },
+          {
+            "name": "total_bet_amount_long",
+            "type": "u64"
+          },
+          {
+            "name": "total_bet_amount_short",
+            "type": "u64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RoundEnded",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "round",
+            "type": "u64"
+          },
+          {
+            "name": "ending_price",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RoundStarted",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "round",
+            "type": "u64"
+          },
+          {
+            "name": "starting_price",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "StalenessThresholdSet",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "staleness_threshold",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "UserInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "affiliate",
+            "type": "pubkey"
+          },
+          {
+            "name": "last_won_round",
+            "type": "u64"
+          },
+          {
+            "name": "times_won",
+            "type": "u64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "WinningsClaimed",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "type": "pubkey"
+          },
+          {
+            "name": "round_index",
+            "type": "u64"
+          },
+          {
+            "name": "is_long",
+            "type": "bool"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Withdrawn",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "type": "pubkey"
+          },
+          {
+            "name": "stablecoin",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          }
+        ]
+      }
+    }
+  ],
+  "constants": [
+    {
+      "name": "BPS",
+      "type": "u16",
+      "value": "10000"
+    },
+    {
+      "name": "PLATFORM_CONFIG",
+      "type": "bytes",
+      "value": "[112, 108, 97, 116, 102, 111, 114, 109, 95, 99, 111, 110, 102, 105, 103]"
+    },
+    {
+      "name": "PLATFORM_VAULT",
+      "type": "bytes",
+      "value": "[112, 108, 97, 116, 102, 111, 114, 109, 95, 118, 97, 117, 108, 116]"
+    },
+    {
+      "name": "ROUND",
+      "type": "bytes",
+      "value": "[114, 111, 117, 110, 100]"
+    },
+    {
+      "name": "USER",
+      "type": "bytes",
+      "value": "[117, 115, 101, 114]"
+    },
+    {
+      "name": "USER_BET",
+      "type": "bytes",
+      "value": "[117, 115, 101, 114, 95, 98, 101, 116]"
+    }
+  ]
+}
