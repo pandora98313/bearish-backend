@@ -137,10 +137,11 @@ function setupWebSocket(io) {
         startFlag = false;
         remainingTime--
       } catch (error) {
+        remainingTime--
+
         console.error("Error in startRound:", error);
       }
     }
-
     if (remainingTime == 0 && !endFlag) {
       logger.info("--- end Period ---");
       endFlag = true;
